@@ -1,16 +1,13 @@
 package br.com.thor.web;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,18 +23,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Event implements Serializable {
+public class ParticipantEvent implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    @JsonIgnore
+    @OneToOne(cascade = ALL)
+    private Event event;
     
-    @OneToMany(cascade = ALL) 
-    private List<ParticipantEvent> participantEvents;
+    @OneToOne(cascade = ALL)
+    private Participant participant;
     
 }
