@@ -33,7 +33,7 @@ public class ParticipantEvent implements Serializable {
     @OneToOne(cascade = ALL)
     private Event event;
     
-    @OneToOne(cascade = ALL)
+    @OneToOne
     private Participant participant;
     
 }

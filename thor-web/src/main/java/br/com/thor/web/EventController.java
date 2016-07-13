@@ -23,13 +23,14 @@ public class EventController {
         return eventRepository.findAll();
     }
 
+    @RequestMapping(value = "/{id}", method = GET)
+    Event findOne(@PathVariable Long id) {
+        return eventRepository.findOne(id);
+    }
+
     @RequestMapping(method = POST)
     Event save(@RequestBody Event event) {
         return eventRepository.save(event);
     }
 
-    @RequestMapping(value = "/{id}", method = GET)
-    Event findOne(@PathVariable Long id) {
-        return eventRepository.findOne(id);
-    }
 }

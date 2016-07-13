@@ -33,6 +33,8 @@ public class Event implements Serializable {
     private Long id;
 
     private String name;
+    
+    private String locale;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
